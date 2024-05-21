@@ -1,7 +1,7 @@
 import * as R from "ramda";
 //AAAAAAAAAAAAAA
 const stringToArray = R.split("");
-
+//MMMMMMMMMM
 /* Question 1 */
 export const countVowels: undefined = undefined
 
