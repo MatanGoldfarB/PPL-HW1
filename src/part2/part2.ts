@@ -1,5 +1,5 @@
 import * as R from "ramda";
-
+//AAAAAAAAAAAAAA
 const stringToArray = R.split("");
 
 /* Question 1 */
