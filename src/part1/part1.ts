@@ -10,6 +10,7 @@ function func1(inventory: Product[]) : number {
     return discounted.reduce((acc, cur) => acc + cur.price, 0)/discounted.length;
 }
 
-const func2 = (inventory: Product[]) : number => inventory.filter((x) => x.discounted === true).reduce((acc, cur) => acc + cur.price, 0)/inventory.reduce((acc, cur) => cur.discounted===true ? acc + 1 : acc, 0);
+const func2 = (inventory: Product[]) : number => inventory.filter((x) => x.discounted === true).reduce((acc, cur) => 
+    acc + cur.price, 0)/inventory.reduce((acc, cur) => cur.discounted===true ? acc + 1 : acc, 0);
 
 console.log(func2(inventory));
