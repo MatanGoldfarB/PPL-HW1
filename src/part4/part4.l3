@@ -10,9 +10,9 @@
     (lambda (l1 l2)
         (if (empty? l1)
             l2
-            (cons (car l1) (append (cdr l1) l2)))
+            (cons (car l1) (append (cdr l1) l2))
+            )
 ))
-
 
 ; Signature: reverse (l)
 ; Type: [List(T) -> List(T)]
@@ -29,7 +29,41 @@
 
 ))
 
+; Signature: duplicate-items (lst, dup-count)
+; Type: [List(T)*List(number) -> List(T)]
+; Purpose: duplicate each T in list according to the number defined at dup-count in the same position
+; Pre-conditions: true
+; Tests: (duplicate-items '(1 2 3) '(0 1)) -> '(1 3)
+
 (define duplicate-items
-    (lambda (lst, dup-count)
-    @todo    
+    (lambda (lst dup-count)
+        (if (empty? lst)
+            '()
+            (append(duplicate-single-item(car lst)(car dup-count))(duplicate-items(cdr lst)(cyclic-dup dup-count)))
+            )
+))
+
+; Signature: cyclic-dup (dup-count)
+; Type: [List(T) -> List(T)]
+; Purpose: return dup-count with changed positions (cyclic list)
+; Pre-conditions: true
+; Tests: (cyclic-dup '(1 2 3)) -> '(2 3 1)
+
+(define cyclic-dup
+    (lambda (dup-count)
+        (append(cdr dup-count)(list (car dup-count)))
+))
+
+; Signature: duplicate-single-item (item, count)
+; Type: [T*number -> List(T)]
+; Purpose: return item as a list that contains the item count times.
+; Pre-conditions: count >=0
+; Tests: (duplicate-single-item 2 3) -> '(2 2 2)
+
+(define duplicate-single-item
+    (lambda (item count)
+        (if (= count 0)
+            '()
+            (cons item (duplicate-single-item item (- count 1)))
+        )
 ))
